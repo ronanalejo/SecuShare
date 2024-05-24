@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile - SecuShare</title>
+    <link rel="stylesheet" href="./css/StorePageCSS.css">
+    <link rel="stylesheet" href="./css/profile.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@100;400;600;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <header>
+        <a href="profile.html" class="logo"><img src="Img/Logo_Summer.png" alt="SecuShare Logo"></a>
+        <nav>
+            <ul>
+                <li><a href="profile.html">Profile</a></li>
+                <li><a href="StorePage.html">Store</a></li>
+                <li><button id="logoutBtn" class="auth-btn">Logout</button></li>
+            </ul>
+        </nav>
+    </header>
+    <section class="profile-section">
+        <div class="profile-container">
+            <h2>Your Profile</h2>
+            <div class="profile-info">
+                <p>Name: <span id="profileName">Loading...</span></p>
+                <p>Email: <span id="profileEmail">Loading...</span></p>
+            </div>
+        </div>
+    </section>
+    <script src="js/auth.js"></script>
+</body>
+</html>
