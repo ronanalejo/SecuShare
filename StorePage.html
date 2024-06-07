@@ -4,32 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SecuShare</title>
-    <link rel="stylesheet" href="./css/StorePageCSS.css">
-
+    <link rel="stylesheet" href="css/StorePageCSS.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" 
-    integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" 
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
-
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/9.0.0/swiper-bundle.min.css" />
 </head>
 <body>
-
     <header>
-        <a href="#" class="logo"><img src="Img/Logo_Summer.png" alt=""></a>
+        <a href="StorePage.html" class="logo"><img src="Img/Logo_Summer.png" alt="SecuShare Logo"></a>
         <ul class="navmenu" id="mainNav">
             <li><a href="">Start Selling</a></li>
-            <li><a href="#" id="tagsDropdownSOC">SOC <i class="fas fa-caret-down"></i></a>
+            <li><a href="SOC.html" id="tagsDropdownSOC">SOC <i class="fas fa-caret-down"></i></a>
                 <div class="dropdown-content">
-                    <a href="#">All</a>
-                    <a href="#">3D</a>
-                    <a href="#">Audio</a>
-                    <a href="#">Business & Money</a>
-                    <a href="#">Comics & Graphic Novels</a>
-                    <a href="#">Design</a>
+                    <a href="SOC.html">All</a>
+                    <a href="UIUXDesign.html">UI/UX Design</a>
+                    <a href="#">Web Development</a>
+                    <a href="#">Unity</a>
+                    <a href="#">App Design</a>
+                    <a href="#">Web Design</a>
                     <a href="#">More</a>
                 </div>
             </li>
@@ -65,35 +60,141 @@
         </div>
     </header>
     
-    
-    
     <div id="searchSuggestions" class="search-suggestions"></div>
-        
-
+         
     <section class="main-home">
         <div class="main-text">
             <h5>Summer Theme</h5>
             <h1>New Summer <br>Theme 2024</h1>
             <p>There's Nothing Like The Summer Heat</p>
-
-            <a href="#" class="main-btn">Shop Now <i class='bx bxs-chevron-right'></i></a>
+            <a href="#trending" class="main-btn">Shop Now <i class='bx bxs-chevron-right'></i></a>
         </div>
-
         <div class="down-arrow">
-            <a href="#trending" class="down"><i class='bx bxs-chevron-down'></i></a>
+            <a href="#product-slider" class="down"><i class='bx bxs-chevron-down'></i></a>
+        </div>
+    </section>
+    <section class="product-slider" id="product-slider">
+        <div class="container">
+            <div class="swiper product__container">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide product__article">
+                        <div class="product__image">
+                            <img src="Img/Product/Bananut Summer- May 17, 2024 10.53.40.png" alt="Product 1" class="product__img">
+                        </div>
+                        <div class="product__data">
+                            <h3 class="product__name">Bananut Summer-</h3>
+                            <p class="product__description">First collection of Banunut in Summer by Olea, Christian.</p>
+                            <p class="product__price">₱100</p>
+                            <a href="#" class="product__button">View More</a>
+                        </div>
+                    </div>
+                    <div class="swiper-slide product__article">
+                        <div class="product__image">
+                            <img src="Img/Product/Bananut_Coconut-May 24, 2024 09.28.jpg" alt="Product 2" class="product__img">
+                        </div>
+                        <div class="product__data">
+                            <h3 class="product__name">Bananut with Coconut Drink 2</h3>
+                            <p class="product__description">A rare sight of a Banana drinking a fellow fruit.</p>
+                            <p class="product__price">₱150</p>
+                            <a href="#" class="product__button">View More</a>
+                        </div>
+                    </div>
+                    <div class="swiper-slide product__article">
+                        <div class="product__image">
+                            <img src="Img/Product/Bananut_surfing - May 24, 2024 09.28.jpg" alt="Product 1" class="product__img">
+                        </div>
+                        <div class="product__data">
+                            <h3 class="product__name">Bananut Summer-</h3>
+                            <p class="product__description">First collection of Banunut in Summer by Olea, Christian.</p>
+                            <p class="product__price">₱100</p>
+                            <a href="#" class="product__button">View More</a>
+                        </div>
+                    </div>
+                    <div class="swiper-slide product__article">
+                        <div class="product__image">
+                            <img src="Img/Product/Bananut_Split - May 24, 2024 09.28.jpg" alt="Product 2" class="product__img">
+                        </div>
+                        <div class="product__data">
+                            <h3 class="product__name">Bananut with Coconut Drink 2</h3>
+                            <p class="product__description">A rare sight of a Banana drinking a fellow fruit.</p>
+                            <p class="product__price">₱150</p>
+                            <a href="#" class="product__button">View More</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-button-next custom-swiper-button"><i class='bx bxs-chevron-right'></i></div>
+            <div class="swiper-button-prev custom-swiper-button"><i class='bx bxs-chevron-left'></i></div>
+            <div class="swiper-pagination"></div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="trending-product" id="trending">
+        <div class="center-text">
+            <h2>Our Trending <span>Products</span></h2>
+        </div>
+        <div class="products">
+            <div class="row">
+                <img src="Img/Product/Bananut Summer- May 17, 2024 10.53.40.png" alt="">
+                <div class="product-text"> 
+                    <h5>Sale</h5>
+                    <div class="heart-icon">
+                        <i class="bx bx-heart"></i>
+                    </div>
+                    <div class="price">
+                        <h4>Bananut Summer Intro</h4>
+                        <p>₱100</p>
+                    </div>    
+                </div>
+            </div>
+            <div class="row">
+                <img src="Img/Product/Bananut_Coconut-May 24, 2024 09.28.jpg" alt="">
+                <div class="product-text"> 
+                    <h5>Sale</h5>
+                    <div class="heart-icon">
+                        <i class="bx bx-heart"></i>
+                    </div>
+                    <div class="price">
+                        <h4>Bananut Coconut Drink</h4>
+                        <p>₱100</p>
+                    </div>    
+                </div>
+            </div>
+            <div class="row">
+                <img src="Img/Product/Bananut_Split - May 24, 2024 09.28.jpg" alt="">
+                <div class="product-text"> 
+                    <h5>Sale</h5>
+                    <div class="heart-icon">
+                        <i class="bx bx-heart"></i>
+                    </div>
+                    <div class="price">
+                        <h4>Bananut Split</h4>
+                        <p>₱100</p>
+                    </div>    
+                </div>
+            </div>
+            <div class="row">
+                <img src="Img/Product/Bananut_surfing - May 24, 2024 09.28.jpg" alt="">
+                <div class="product-text"> 
+                    <h5>Sale</h5>
+                    <div class="heart-icon">
+                        <i class="bx bx-heart"></i>
+                    </div>
+                    <div class="price">
+                        <h4>Bananut Surfing</h4>
+                        <p>₱100</p>
+                    </div>    
+                </div>
+            </div>
         </div>
     </section>
 
-    <div class="products">
-        <div class="row"></div>
-        <img src="" alt="">
-        <div class="product-text">
-
-        </div>
-    </div>
-    <script src="js/firebase.js" type="module"></script>
-    <script src="js/firestore.js" type="module"></script>
-    <script src="js/auth.js" type="module"></script>
+    <script src="productDisplay.js"></script>
+    <script src="searchFunctionality.js"></script>
+    <script src="dropdown.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/9.0.0/swiper-bundle.min.js"></script>
+    <script src="js/swiper-init.js"></script>
+    <script src="js/auth.js"></script>
     <script src="./js/SearchFunctionality.js"></script>
     <script src="./js/dropdown.js"></script>
 </body>
