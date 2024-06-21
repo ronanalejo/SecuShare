@@ -37,6 +37,11 @@ export const loginUser = async (email, password) => {
 
 export const logoutUser = async () => {
     try {
+        // Clear local storage and session storage
+        localStorage.clear();
+        sessionStorage.clear();
+
+        // Sign out the user from Firebase Authentication
         await signOut(auth);
         alert("Logged out successfully.");
         window.location.href = 'login.html';  // Redirect to login page
@@ -75,6 +80,12 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (logoutButton) {
-        logoutButton.addEventListener('click', logoutUser);
+        console.log("Logout button found");
+        logoutButton.addEventListener('click', () => {
+            console.log("Logout button clicked");
+            logoutUser();
+        });
+    } else {
+        console.log("Logout button not found");
     }
 });

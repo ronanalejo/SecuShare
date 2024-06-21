@@ -19,21 +19,20 @@
                 <li><a href="profile.html">Profile</a></li>
                 <li><a href="editProfile.html">Edit Profile</a></li>
                 <li><a href="StorePage.html">Store</a></li>
-                <li><a href="Products.html">Products</a></li>
                 <li><button id="logoutBtn" class="auth-btn">Logout</button></li>
             </ul>
         </nav>
     </header>
     <div class="container">
         <h2 class="section-title">Edit Product</h2>
-        <form action="#" method="POST">
+        <form action="#" id="editProductForm" method="POST">
             <div class="form-group">
                 <label for="productName">Product Name</label>
                 <input type="text" id="productName" name="productName" required>
             </div>
             <div class="form-group">
                 <label for="productPrice">Price</label>
-                <input type="number" id="productPrice" name="productPrice" required>
+                <input type="number" id="productPrice" name="productPrice" min="0" required>
             </div>
             <div class="form-group">
                 <label for="productDescription">Description</label>
@@ -41,19 +40,23 @@
             </div>
             <div class="form-group">
                 <label for="coverImage">Cover Image</label>
-                <input type="file" id="coverImage" name="coverImage" accept="image/*">
+                <input type="file" id="coverImage" name="coverImage" accept="image/png, image/jpeg">
             </div>
             <div class="form-group">
                 <label for="thumbnailImage">Thumbnail Image</label>
-                <input type="file" id="thumbnailImage" name="thumbnailImage" accept="image/*">
+                <input type="file" id="thumbnailImage" name="thumbnailImage" accept="image/png, image/jpeg">
             </div>
             <div class="form-group">
                 <label for="productQty">Quantity</label>
-                <input type="number" id="productQty" name="productQty" required>
+                <input type="number" id="productQty" name="productQty" min="1" required>
             </div>
             <button type="submit" class="btn-save-continue"><box-icon name='save'></box-icon> Save and Continue</button>
         </form>
     </div>
-    <script src="js/auth.js"></script>
+    <script type="module" src="./js/firebase.js"></script>
+    <script type="module" src="./js/firestore.js"></script>
+    <script type="module" src="./js/auth.js"></script>
+    <script type="module" src="./js/profile.js"></script>
+    <script type="module" src="./js/editProduct.js"></script>
 </body>
 </html>

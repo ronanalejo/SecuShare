@@ -30,8 +30,8 @@
                 <div class="form-group">
                     <label for="profilePicture">Profile Picture</label>
                     <div class="profile-picture-upload">
-                        <img src="Img/default-profile.png" alt="Profile Picture" id="currentProfilePicture">
-                        <input type="file" id="profilePicture" name="profilePicture" accept="image/*">
+                        <img alt="Profile Picture" id="currentProfilePicture">
+                        <input type="file" id="profilePicture" name="profilePicture" accept="image/png, image/jpeg">
                     </div>
                 </div>
                 <div class="form-group">
@@ -48,6 +48,9 @@
             </form>
         </div>
     </section>
-    <script src="js/auth.js"></script>
+    <script type="module" src="./js/firebase.js"></script>
+    <script type="module" src="./js/firestore.js"></script>
+    <script type="module" src="./js/auth.js"></script>
+    <script type="module" src="./js/editProfile.js"></script>
 </body>
 </html>

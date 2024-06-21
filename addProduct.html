@@ -14,14 +14,13 @@
                 <li><a href="profile.html">Profile</a></li>
                 <li><a href="editProfile.html">Edit Profile</a></li>
                 <li><a href="StorePage.html">Store</a></li>
-                <li><a href="Products.html">Products</a></li>
                 <li><button id="logoutBtn" class="auth-btn">Logout</button></li>
             </ul>
         </nav>
     </header>
     <div class="container">
         <h1>Create a New Product</h1>
-        <form action="editProduct.html" method="POST">
+        <form id="addProductForm" action="editProduct.html" method="POST">
             <div class="form-group">
                 <label for="productName">Name</label>
                 <input type="text" id="productName" name="productName" required>
@@ -33,7 +32,7 @@
                     <option value="course">Course or tutorial</option>
                     <option value="ebook">E-book</option>
                     <option value="membership">Membership</option>
-                    <option value="physical">Physical good</option>
+                    <option value="physical">Artwork</option>
                     <option value="bundle">Bundle</option>
                 </select>
             </div>
@@ -42,10 +41,14 @@
                 <input type="number" id="price" name="price" min="0" step="0.01" required>
             </div>
             <button type="submit">Next: Customize</button>
-            <a href="editProduct.html">"dummy next"</a>
         </form>
         <p>Make some selections, fill in some boxes, and go live in minutes.</p>
         <p>Our Help Center has everything you need to know.</p>
     </div>
+    <script type="module" src="./js/firebase.js"></script>
+    <script type="module" src="./js/firestore.js"></script>
+    <script type="module" src="./js/auth.js"></script>
+    <script type="module" src="./js/profile.js"></script>
+    <script type="module" src="./js/addProduct.js"></script>
 </body>
 </html>
