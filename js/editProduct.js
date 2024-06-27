@@ -1,7 +1,7 @@
-import { db, storage } from './firebase.js';
+// editProduct.js
+import { db, storage, auth } from './firebase.js';
 import { setDoc, doc } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore.js";
 import { ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-storage.js";
-import { auth } from './firebase.js';
 
 document.addEventListener('DOMContentLoaded', () => {
     const urlParams = new URLSearchParams(window.location.search);
@@ -36,32 +36,39 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         try {
-            const productRef = doc(db, "products", `${userId}_${productName}`);
+            // Define Firestore and Storage paths
+            const productRef = doc(db, `users/${userId}/products/${productName}`);
+            const productStoragePath = `products/${userId}/${productName}`;
+
+            // Prepare product data
             const productData = {
                 name: productName,
+                type: urlParams.get('type'),
                 price: productPrice,
                 description: productDescription,
                 quantity: productQty,
                 userId: userId
             };
 
-            const productStoragePath = `products/${userId}/${productName}`;
-
+            // Upload Cover Image if available
             if (coverImage) {
-                const coverImageRef = ref(storage, `${productStoragePath}/cover/cover.jpg`);
+                const coverImageRef = ref(storage, `${productStoragePath}/Cover/cover.jpg`);
                 await uploadBytes(coverImageRef, coverImage);
                 const coverImageUrl = await getDownloadURL(coverImageRef);
                 productData.coverImageUrl = coverImageUrl;
             }
 
+            // Upload Thumbnail Image if available
             if (thumbnailImage) {
-                const thumbnailImageRef = ref(storage, `${productStoragePath}/thumbnail/thumbnail.jpg`);
+                const thumbnailImageRef = ref(storage, `${productStoragePath}/Thumbnail/thumbnail.jpg`);
                 await uploadBytes(thumbnailImageRef, thumbnailImage);
                 const thumbnailImageUrl = await getDownloadURL(thumbnailImageRef);
                 productData.thumbnailImageUrl = thumbnailImageUrl;
             }
 
+            // Save product data in Firestore
             await setDoc(productRef, productData);
+
             alert("Product saved successfully!");
             window.location.href = 'StorePage.html';
         } catch (error) {
