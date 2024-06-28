@@ -1,4 +1,3 @@
-// editProduct.js
 import { db, storage, auth } from './firebase.js';
 import { setDoc, doc } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore.js";
 import { ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-storage.js";

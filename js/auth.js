@@ -1,15 +1,10 @@
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-auth.js";
-import { createUserProfile, isEmailRegistered } from "./firestore.js";
+import { createUserProfile } from "./firestore.js";
 
 const auth = getAuth();
 
 export const registerUser = async (email, password, name) => {
     try {
-        if (await isEmailRegistered(email)) {
-            alert("This email is already in use. Please use a different email.");
-            return;
-        }
-
         console.log("Attempting to register user with email:", email);
         const userCredential = await createUserWithEmailAndPassword(auth, email, password);
         const user = userCredential.user;
@@ -27,6 +22,7 @@ export const loginUser = async (email, password) => {
     try {
         console.log("Attempting to log in user with email:", email);
         const userCredential = await signInWithEmailAndPassword(auth, email, password);
+        const user = userCredential.user;
         console.log("Login successful, redirecting...");
         window.location.href = 'StorePage.html';  // Redirect to store page after successful login
     } catch (error) {
@@ -37,11 +33,6 @@ export const loginUser = async (email, password) => {
 
 export const logoutUser = async () => {
     try {
-        // Clear local storage and session storage
-        localStorage.clear();
-        sessionStorage.clear();
-
-        // Sign out the user from Firebase Authentication
         await signOut(auth);
         alert("Logged out successfully.");
         window.location.href = 'login.html';  // Redirect to login page
@@ -54,7 +45,7 @@ export const logoutUser = async () => {
 document.addEventListener('DOMContentLoaded', () => {
     const loginForm = document.getElementById('loginForm');
     const registerForm = document.getElementById('registerForm');
-    const logoutButton = document.querySelector('#logoutBtn');
+    const logoutButton = document.getElementById('logoutBtn');
 
     if (loginForm) {
         console.log("Login form detected.");
@@ -81,9 +72,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (logoutButton) {
         console.log("Logout button found");
-        logoutButton.addEventListener('click', () => {
+        logoutButton.addEventListener('click', async () => {
             console.log("Logout button clicked");
-            logoutUser();
+            await logoutUser();
         });
     } else {
         console.log("Logout button not found");
