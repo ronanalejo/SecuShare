@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOC - SecuShare</title>
+    <link rel="stylesheet" href="css/image.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/9.0.0/swiper-bundle.min.css" />
+</head>
+<body>
+    <header>
+        <a href="profile.html" class="logo"><img src="Img/Logo_Summer.png" alt="SecuShare Logo"></a>
+        <ul class="navmenu" id="mainNav">
+            <li><a href="Image.html" id="tagsDropdownImage">Image <i class="fas fa-caret-down"></i></a>
+                <div class="dropdown-content">
+                    <a href="Image.html#photo">Photos</a>
+                    <a href="Image.html#vector">Vectors</a>
+                    <a href="Image.html#illustration">Illustrations</a>
+                    <a href="Image.html#background">Background</a>
+                    <a href="Image.html">More</a>
+                </div>
+            </li>
+            <li><a href="Video.html" id="tagsDropdownVideo">Video <i class="fas fa-caret-down"></i></a>
+                <div class="dropdown-content">
+                    <a href="Video.html#animation.html">Animation</a>
+                    <a href="Video.html#gif.html">Gifs</a>
+                    <a href="Video.html#transitions.html">Transitions</a>
+                    <a href="Video.html#tutorial.html">Tutorial</a>
+                    <a href="Video.html#trailer">Trailers</a>
+                    <a href="Video.html">More</a>
+                </div>
+            </li>
+            <li><a href="Audio.html" id="tagsDropdownAudio">Audio <i class="fas fa-caret-down"></i></a>
+                <div class="dropdown-content">
+                    <a href="Audio.html#music">Musics</a>
+                    <a href="Audio.html#soundeEffect">Sound Effects</a>
+                    <a href="Audio.html#loop">Audio</a>
+                    <a href="Audio.html#voiceOver">Voice Overs</a>
+                    <a href="Audio.html#ambient">Ambients</a>
+                    <a href="Audio.html">More</a>
+                </div>
+            </li>
+            <li><a href="PDF.html" id="tagsDropdownPDF">PDF <i class="fas fa-caret-down"></i></a>
+                <div class="dropdown-content">
+                    <a href="PDF.html#educational.html">Educational</a>
+                    <a href="PDF.html#review.html">Review</a>
+                    <a href="PDF.html#research.html">Research Paper</a>
+                    <a href="PDF.html">More</a>
+                </div>
+            </li>
+            <li><a href="Ebook.html" id="tagsDropdownPDF">E-Book <i class="fas fa-caret-down"></i></a>
+                <div class="dropdown-content">
+                    <a href="DF.html#educational.html">Educational</a>
+                    <a href="DF.html#eBook.html">E-Book</a>
+                    <a href="DF.html#research.html">Research Paper</a>
+                    <a href="EBook.html">More</a>
+                </div>
+            </li>
+        </ul>
+        <div class="navicon">
+            <input type="text" id="searchBar" placeholder="Search products...">
+            <a href="#"><i class='bx bx-cart-alt'></i></a>
+            <a href="profile.html"><i class='bx bxs-user-circle'></i></a>
+            <div class="bx bx-menu" id="menu-icon"></div>
+        </div>
+    </header>
+    
+    <div id="searchSuggestions" class="search-suggestions"></div>
+
+    <section class="category-banner">
+        <div class="banner-text">
+            <h1>Video Category</h1>    
+            <p>Explore our collection of Video digital products.</p>
+        </div>
+    </section>
+    
+    <section class="subcategories">
+        <div class="subcategory">
+            <h3>Animation</h3>
+            <a href="#animation" class="subcategory-link">View Products</a>
+        </div>
+        <div class="subcategory">
+            <h3>Gifs</h3>
+            <a href="#gif" class="subcategory-link">View Products</a>
+        </div>
+        <div class="subcategory">
+            <h3>Transitions</h3>
+            <a href="#transitions" class="subcategory-link">View Products</a>
+        </div>
+        <div class="subcategory">
+            <h3>Tutorial</h3>
+            <a href="#tutorial" class="subcategory-link">View Products</a>
+        </div>
+        <div class="subcategory">
+            <h3>Trailers</h3>
+            <a href="#trailers" class="subcategory-link">View Products</a>
+        </div>
+    </section>
+    
+    <section class="products">
+        <section id="animation" class="product-section">
+            <h2>Animation</h2>
+            <div class="product-container"></div>
+        </section>
+        <section id="gif" class="product-section">
+            <h2>Gifs</h2>
+            <div class="product-container"></div>
+        </section>
+        <section id="transitions" class="product-section">
+            <h2>Transitions</h2>
+            <div class="product-container"></div>
+        </section>
+        <section id="tutorial" class="product-section">
+            <h2>Tutorial</h2>
+            <div class="product-container"></div>
+        </section>
+        <section id="trailers" class="product-section">
+            <h2>Trailers</h2>
+            <div class="product-container"></div>
+        </section>
+    </section>
+
+    <script src="productDisplay.js"></script>
+    <script src="searchFunctionality.js"></script>
+    <script src="js/dropdown.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/9.0.0/swiper-bundle.min.js"></script>
+    <script src="js/swiper-init.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/search.js"></script>
+</body>
+</html>
