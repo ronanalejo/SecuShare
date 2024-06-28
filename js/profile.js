@@ -1,37 +1,34 @@
-import { auth } from './firebase.js';
-import { fetchUserProfile } from './firestore.js';
+import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-auth.js";
+import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore.js";
+import { db } from "./firebase.js";
 
-const loadProfile = async () => {
-    const userId = auth.currentUser.uid;
-    const userProfile = await fetchUserProfile(userId);
-    if (userProfile) {
-        const profileNameElement = document.getElementById('profileName');
-        const profileEmailElement = document.getElementById('profileEmail');
-        const profilePictureElement = document.getElementById('profilePicture');
-
-        if (profileNameElement && profileEmailElement) {
-            profileNameElement.textContent = userProfile.name;
-            profileEmailElement.textContent = userProfile.email;
-        } else {
-            console.error("Profile name or email element not found");
-        }
-
-        if (profilePictureElement && userProfile.profilePicture) {
-            profilePictureElement.src = userProfile.profilePicture;
-        } else {
-            console.error("Profile picture element not found or userProfile.profilePicture is null");
-        }
-    } else {
-        console.log("No user profile found");
-    }
-};
+const auth = getAuth();
 
 document.addEventListener('DOMContentLoaded', () => {
-    auth.onAuthStateChanged((user) => {
+    const profileNameElement = document.getElementById('profileName');
+    const profileEmailElement = document.getElementById('profileEmail');
+    const profilePictureElement = document.getElementById('profilePicture');
+
+    onAuthStateChanged(auth, async (user) => {
         if (user) {
-            loadProfile();
+            console.log("User is logged in:", user);
+            const userRef = doc(db, 'users', user.uid);
+            const userSnap = await getDoc(userRef);
+            if (userSnap.exists()) {
+                const userData = userSnap.data();
+                if (profileNameElement) profileNameElement.textContent = userData.name || 'No name provided';
+                if (profileEmailElement) profileEmailElement.textContent = userData.email || user.email;
+                if (userData.profilePicture && profilePictureElement) {
+                    profilePictureElement.src = userData.profilePicture;
+                } else if (profilePictureElement) {
+                    profilePictureElement.alt = 'No profile picture';
+                }
+            } else {
+                console.log("No such user data!");
+            }
         } else {
-            window.location.href = 'login.html';
+            console.log("No user is logged in");
+            window.location.href = 'login.html';  // Redirect to login page if no user is logged in
         }
     });
 });
