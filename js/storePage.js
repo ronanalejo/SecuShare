@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         const imgDiv = document.createElement('div');
         imgDiv.classList.add('product__image');
-
+ 
         const imgElement = document.createElement('img');
         imgElement.src = product.thumbnailImageUrl;
         imgElement.alt = product.name;

@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         console.error("No product ID or user ID found in the URL.");
         return;
     }
-
+  
     try {
         const productRef = doc(db, `users/${userId}/products/${productId}`);
         const productSnap = await getDoc(productRef);
