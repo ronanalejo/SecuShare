@@ -482,3 +482,23 @@ header.sticky{
     gap: 20px;
     justify-content: space-around;
 }
+
+/* Additional CSS for Add to Cart button */
+.product__button {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #ff6347;
+    color: #fff;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.product__button:hover {
+    background-color: #ff4500;
+}
+
+.product__button + .product__button {
+    margin-left: 10px;
+}

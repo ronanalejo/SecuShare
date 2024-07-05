@@ -1,9 +1,8 @@
-// storePage.js
 import { getFirestore, collectionGroup, getDocs } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore.js";
 import { db } from "./firebase.js";
 
 document.addEventListener('DOMContentLoaded', async () => {
-    const productsContainer = document.getElementById('productsContainer');
+    const productsContainer = document.querySelector('.swiper-wrapper');
 
     const fetchProducts = async () => {
         const productsQuery = collectionGroup(db, 'products');
@@ -23,7 +22,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         const imgDiv = document.createElement('div');
         imgDiv.classList.add('product__image');
- 
+
         const imgElement = document.createElement('img');
         imgElement.src = product.thumbnailImageUrl;
         imgElement.alt = product.name;
@@ -51,15 +50,47 @@ document.addEventListener('DOMContentLoaded', async () => {
         viewMoreButton.href = `productDetail.html?userId=${product.userId}&productName=${product.name}`;
         viewMoreButton.textContent = 'View More';
 
+        const addToCartButton = document.createElement('button');
+        addToCartButton.classList.add('product__button');
+        addToCartButton.textContent = 'Add to Cart';
+        addToCartButton.onclick = (event) => {
+            event.stopPropagation(); // Prevents the product detail page from opening
+            addToCart(product);
+        };
+
         productDataDiv.appendChild(nameElement);
         productDataDiv.appendChild(descriptionElement);
         productDataDiv.appendChild(priceElement);
         productDataDiv.appendChild(viewMoreButton);
+        productDataDiv.appendChild(addToCartButton);
 
         productDiv.appendChild(imgDiv);
         productDiv.appendChild(productDataDiv);
 
         return productDiv;
+    };
+
+    const addToCart = (product) => {
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+        const existingProductIndex = cart.findIndex(item => item.id === product.userId + product.name);
+
+        if (existingProductIndex !== -1) {
+            cart[existingProductIndex].quantity += 1;
+        } else {
+            const cartProduct = {
+                id: product.userId + product.name,
+                userId: product.userId,
+                name: product.name,
+                price: product.price,
+                image: product.thumbnailImageUrl,
+                quantity: 1
+            };
+            cart.push(cartProduct);
+        }
+
+        localStorage.setItem('cart', JSON.stringify(cart));
+        alert(`${product.name} added to cart`);
     };
 
     await fetchProducts();
