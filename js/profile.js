@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         } else {
             console.log("No user is logged in");
-            window.location.href = 'login.html';  // Redirect to login page if no user is logged in
+            window.location.href = 'login.html'; n
         }
     });
 });

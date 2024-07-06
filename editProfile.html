@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Profile - SecuShare</title>
     <link rel="stylesheet" href="./css/StorePageCSS.css">
-    <link rel="stylesheet" href="./css/profile.css">
+    <link rel="stylesheet" href="./css/EditProfile.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jost:wght@100;400;600;900&display=swap" rel="stylesheet">
@@ -17,35 +17,48 @@
         <a href="profile.html" class="logo"><img src="Img/Logo_Summer.png" alt="SecuShare Logo"></a>
         <nav>
             <ul>
-                <li><a href="profile.html">Profile</a></li> <!-- Correct link to profile -->
+                <li><a href="profile.html">Profile</a></li>
                 <li><a href="StorePage.html">Store</a></li>
                 <li><button id="logoutBtn" class="auth-btn">Logout</button></li>
             </ul>
         </nav>
     </header>
-    <section class="edit-profile-section">
-        <div class="edit-profile-container">
-            <h2>Edit Profile</h2>
-            <form id="editProfileForm">
-                <div class="form-group">
-                    <label for="profilePicture">Profile Picture</label>
-                    <div class="profile-picture-upload">
-                        <img alt="Profile Picture" id="currentProfilePicture">
-                        <input type="file" id="profilePicture" name="profilePicture" accept="image/png, image/jpeg">
+    <section class="profile-section">
+        <div class="main-content">
+            <div class="profile-container">
+                <img alt="Profile Picture" class="profile-picture" id="profilePicture">
+                <h2>Edit Profile</h2>
+                <form id="editProfileForm">
+                    <div class="form-group">
+                        <label for="profilePicture">Profile Picture</label>
+                        <div class="profile-picture-upload">
+                            <img alt="Profile Picture" id="currentProfilePicture">
+                            <input type="file" id="profilePicture" name="profilePicture" accept="image/png, image/jpeg">
+                        </div>
                     </div>
-                </div>
-                <div class="form-group">
-                    <label for="profileName">Name</label>
-                    <input type="text" id="profileName" name="profileName" required>
-                </div>
-                <div class="form-group">
-                    <label for="profileEmail">Email</label>
-                    <input type="email" id="profileEmail" name="profileEmail" required>
-                </div>
-                <div class="form-group">
-                    <button type="submit" class="save-btn">Save Changes</button>
-                </div>
-            </form>
+                    <div class="form-group">
+                        <label for="profileName">Name</label>
+                        <input type="text" id="profileName" name="profileName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="profileEmail">Email</label>
+                        <input type="email" id="profileEmail" name="profileEmail" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="profileBio">Bio</label>
+                        <textarea id="profileBio" name="profileBio" rows="4" placeholder="Enter your bio"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="save-btn">Save Changes</button>
+                    </div>
+                    <div class="form-group">
+                        <button type="button" id="cancelBtn" class="cancel-btn">Cancel</button>
+                    </div>                    
+                </form>
+            </div>
+
+            <div class="product-management">
+            </div>
         </div>
     </section>
     <script type="module" src="./js/firebase.js"></script>

@@ -1,5 +1,5 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Jost', sans-serif;
     background-color: #f8f8f8;
     margin: 0;
     padding: 0;
@@ -12,6 +12,9 @@ header {
     padding: 10px 20px;
     background: #fff67b;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
 }
 
 header .logo img {
@@ -19,44 +22,72 @@ header .logo img {
     height: auto;
 }
 
-header nav ul {
-    list-style: none;
+header .navmenu {
     display: flex;
+    list-style: none;
     margin: 0;
     padding: 0;
 }
 
-header nav ul li {
+header .navmenu li {
     margin-left: 20px;
 }
 
-header nav ul li a {
+header .navmenu li a {
     text-decoration: none;
     color: #333;
     font-weight: 600;
 }
 
-header nav ul li .auth-btn {
-    padding: 10px 20px;
-    background: #d9534f;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background 0.3s;
+.navicon {
+    display: flex;
+    align-items: center;
 }
 
-header nav ul li .auth-btn:hover {
-    background: #c9302c;
+.navicon a {
+    color: #333;
+    font-size: 24px;
+    margin-left: 10px;
+    text-decoration: none;
+}
+
+.sidebar {
+    width: 250px;
+    height: 100%;
+    position: fixed;
+    top: 60px; /* Adjusted to start below the header */
+    left: 0;
+    background-color: #333;
+    color: #fff;
+    padding-top: 20px;
+    overflow-y: auto;
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    padding: 15px 20px;
+    border-bottom: 1px solid #555;
+}
+
+.sidebar ul li a {
+    color: #fff;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+
+.sidebar ul li a i {
+    margin-right: 10px;
 }
 
 .container {
-    max-width: 600px;
-    margin: 50px auto;
-    background-color: #fff;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-left: 250px;
+    padding: 20px;
+    padding-top: 100px; /* Adjusted to provide space below the fixed header */
 }
 
 h1 {
@@ -71,6 +102,7 @@ h1 {
 .form-group label {
     display: block;
     font-weight: bold;
+    margin-bottom: 5px;
 }
 
 .form-group input[type="text"],
@@ -81,6 +113,13 @@ h1 {
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 16px;
+}
+
+.form-buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
 }
 
 button[type="submit"] {
@@ -97,7 +136,110 @@ button[type="submit"]:hover {
     background-color: #45a049;
 }
 
+.cancel-btn {
+    background-color: #f44336;
+    color: white;
+    padding: 15px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+}
+
+.cancel-btn:hover {
+    background-color: #e53935;
+}
+
 p {
+    margin-top: 20px;
+    font-size: 14px;
+    color: #666;
+}
+
+/* Profile-like styling */
+
+.profile-section {
+    display: flex;
+    padding: 100px 10%;
+}
+
+.profile-container {
+    flex: 1;
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    margin-left: 20px;
+}
+
+.profile-container h2 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.profile-container .form-group {
+    margin-bottom: 20px;
+}
+
+.profile-container .form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.profile-container .form-group input[type="text"],
+.profile-container .form-group select,
+.profile-container .form-group input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.profile-container .form-buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.profile-container button[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 15px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.profile-container button[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+.profile-container .cancel-btn {
+    background-color: #f44336;
+    color: white;
+    padding: 15px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+}
+
+.profile-container .cancel-btn:hover {
+    background-color: #e53935;
+}
+
+.profile-container p {
     margin-top: 20px;
     font-size: 14px;
     color: #666;

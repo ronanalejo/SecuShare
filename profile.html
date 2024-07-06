@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile - SecuShare</title>
     <link rel="stylesheet" href="./css/StorePageCSS.css">
-    <link rel="stylesheet" href="./css/profile.css">
+    <link rel="stylesheet" href="./css/profile2.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jost:wght@100;400;600;900&display=swap" rel="stylesheet">
@@ -15,62 +15,42 @@
 <body>
     <header>
         <a href="StorePage.html" class="logo"><img src="Img/Logo_Summer.png" alt="SecuShare Logo"></a>
-        <nav>
-            <ul>
-                <li><a href="profile.html">Profile</a></li>
-                <li><a href="editProfile.html">Edit Profile</a></li>
-                <li><a href="StorePage.html">Store</a></li>
-                <li><button id="logoutBtn" class="auth-btn">Logout</button></li>
-            </ul>
-        </nav>
+        <ul class="navmenu" id="mainNav">
+        </ul>
+        <div class="navicon">
+            <a href="Cart.html"><i class='bx bx-cart-alt'></i></a>
+            <a href="profile.html"><i class='bx bxs-user-circle'></i></a>
+            <div class="bx bx-menu" id="menu-icon"></div>
+        </div>
     </header>
     <section class="profile-section">
+    <div class="sidebar">
+        <ul>
+            <li><a href="profile.html" class="active"><i class='bx bx-home-alt'></i> Home</a></li>
+            <li><a href="Products.html"><i class='bx bx-book-open'></i> Products</a></li>
+            <li><a href="Sales"><i class='bx bx-dollar-circle'></i> Sales</a></li>
+            <li><a href="cashOut.html"><i class='bx bx-wallet' ></i> CashOut</a></li>
+            <li><a href="editProfile.html"><i class='bx bx-cog'></i> Settings</a></li>
+        </ul>
+    </div>
+
+    <main class="main-content">
         <div class="profile-container">
             <img alt="Profile Picture" class="profile-picture" id="profilePicture">
             <h2>Your Profile</h2>
             <div class="profile-info">
                 <p>Name: <span id="profileName">Loading...</span></p>
                 <p>Email: <span id="profileEmail">Loading...</span></p>
-                <div class="container">
-                    <h1>Add Product:</h1>
-                    <div class="product-actions">
-                        <a href="addProduct.html" class="down"><i class='bx bx-plus-circle'></i></a>
-                    </div>
-                </div>
-                <table class="product-table">
-                    <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Sales</th>
-                            <th>Revenue</th>
-                            <th>Price</th>
-                            <th>Status</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Bananut LOGO</td>
-                            <td>0</td>
-                            <td>$0</td>
-                            <td>$0+</td>
-                            <td>Unpublished</td>
-                        </tr>
-                    </tbody>
-                    <tfoot>
-                        <tr>
-                            <td>Totals</td>
-                            <td>0</td>
-                            <td>$0</td>
-                        </tr>
-                    </tfoot>
-                </table>
+                <p>Bio: <span id="profileBio">This User has not yet added their Bio...</span></p>
             </div>
-            <a href="editProfile.html" class="edit-btn">Edit Profile</a>
         </div>
+    </main>
     </section>
+
     <script type="module" src="./js/firebase.js"></script>
     <script type="module" src="./js/firestore.js"></script>
     <script type="module" src="./js/auth.js"></script>
     <script type="module" src="./js/profile.js"></script>
+</body>
 </body>
 </html>

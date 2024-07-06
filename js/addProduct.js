@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     const addProductForm = document.getElementById('addProductForm');
+
     if (addProductForm) {
         addProductForm.addEventListener('submit', (event) => {
             event.preventDefault();
