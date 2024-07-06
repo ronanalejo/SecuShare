@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - SecuShare</title>
+    <link rel="stylesheet" href="css/Checkout.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <header>
+        <a href="StorePage.html" class="logo"><img src="Img/Logo_Summer.png" alt="SecuShare Logo"></a>
+        <ul class="navmenu" id="mainNav">
+        </ul>
+        <div class="navicon">
+            <a href="Cart.html"><i class='bx bx-cart-alt'></i></a>
+            <a href="profile.html"><i class='bx bxs-user-circle'></i></a>
+            <div class="bx bx-menu" id="menu-icon"></div>
+        </div>
+    </header>
+
+    <section class="checkout">
+        <div class="checkout-container">
+            <div class="checkout-form">
+                <h2>Checkout</h2>
+                <form id="gcash-form">
+                    <div class="form-group">
+                        <label for="customer-name">Name:</label>
+                        <input type="text" id="customer-name" name="customerName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="customer-email">Email:</label>
+                        <input type="email" id="customer-email" name="customerEmail" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="customer-phone">Phone Number:</label>
+                        <input type="text" id="customer-phone" name="customerPhone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="amount">Amount:</label>
+                        <input type="text" id="amount" name="amount" readonly>
+                    </div>
+                    <button type="submit">Pay with GCash</button>
+                </form>
+                <div id="payment-result"></div>
+            </div>
+            <div class="checkout-summary">
+                <h2>Order Summary</h2>
+                <div class="cart-items"></div>
+                <p>Total: ₱<span id="cart-total">0</span></p>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://checkout.paymongo.com/v1/paymongo.js"></script>
+    <script src="js/checkout.js"></script>
+</body>
+</html>
