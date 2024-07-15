@@ -148,6 +148,16 @@ nav ul li a:hover {
     margin-top: 5px;
 }
 
+.form-group input[type="text"],
+.form-group select,
+.form-group input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
 .save-btn,
 .cancel-btn {
     width: 100%;

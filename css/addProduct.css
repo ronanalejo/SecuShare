@@ -87,7 +87,7 @@ header .navmenu li a {
 .container {
     margin-left: 250px;
     padding: 20px;
-    padding-top: 100px; /* Adjusted to provide space below the fixed header */
+    padding-top: 100px;
 }
 
 h1 {
@@ -159,7 +159,6 @@ p {
     color: #666;
 }
 
-/* Profile-like styling */
 
 .profile-section {
     display: flex;

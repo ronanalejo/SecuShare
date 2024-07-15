@@ -42,16 +42,27 @@
                         <input type="text" id="productName" name="productName" required>
                     </div>
                     <div class="form-group">
+                        <label for="productType">Product Type</label>
+                        <select id="productType" name="productType" required>
+                            <option value="image">Image</option>
+                            <option value="video">Video</option>
+                            <option value="audio">Audio</option>
+                            <option value="pdf">PDF</option>
+                            <option value="ebook">E-Book</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="subCategory">Subcategory</label>
+                        <select id="subCategory" name="subCategory" required>
+                        </select>
+                    </div>
+                    <div class="form-group">
                         <label for="productDescription">Description</label>
                         <textarea id="productDescription" name="productDescription" rows="4" required></textarea>
                     </div>
                     <div class="form-group">
                         <label for="productPrice">Price</label>
                         <input type="number" id="productPrice" name="productPrice" step="0.01" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="productCategory">Category</label>
-                        <input type="text" id="productCategory" name="productCategory" required>
                     </div>
                     <div class="form-group">
                         <label for="productPictures">Product Pictures</label>
