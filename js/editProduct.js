@@ -1,11 +1,29 @@
-import { db, storage, auth } from './firebase.js';
-import { setDoc, doc } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore.js";
-import { ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-storage.js";
-
 document.addEventListener('DOMContentLoaded', () => {
     const urlParams = new URLSearchParams(window.location.search);
     document.getElementById('productName').value = urlParams.get('name');
     document.getElementById('productPrice').value = urlParams.get('price');
+
+    const subcategories = {
+        image: ['Photos', 'Vectors', 'Illustrations', 'Background', 'More'],
+        video: ['Animation', 'Gifs', 'Transitions', 'Tutorial', 'Trailers', 'More'],
+        audio: ['Musics', 'Sound Effects', 'Loop', 'Voice Overs', 'Ambients', 'More'],
+        pdf: ['Educational', 'Review', 'Research Paper', 'More'],
+        ebook: ['Educational', 'E-Book', 'Research Paper', 'More']
+    };
+
+    const productTypeElement = document.getElementById('productType');
+    const subCategoryGroup = document.getElementById('subCategoryGroup');
+    const subCategoryElement = document.getElementById('subCategory');
+
+    productTypeElement.addEventListener('change', () => {
+        const selectedType = productTypeElement.value;
+        const options = subcategories[selectedType] || [];
+
+        subCategoryElement.innerHTML = options.map(option => `<option value="${option.toLowerCase()}">${option}</option>`).join('');
+        subCategoryGroup.style.display = options.length ? 'block' : 'none';
+    });
+
+    productTypeElement.dispatchEvent(new Event('change'));
 
     document.getElementById('editProductForm').addEventListener('submit', async (event) => {
         event.preventDefault();
@@ -24,6 +42,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const coverImage = document.getElementById('coverImage').files[0];
         const thumbnailImage = document.getElementById('thumbnailImage').files[0];
 
+        const productType = productTypeElement.value;
+        const subCategory = subCategoryElement.value;
+
         if (coverImage && !['image/png', 'image/jpeg'].includes(coverImage.type)) {
             alert('Please upload a valid PNG or JPG image for the Cover Image.');
             return;
@@ -35,29 +56,25 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         try {
-            // Define Firestore and Storage paths
             const productRef = doc(db, `users/${userId}/products/${productName}`);
             const productStoragePath = `products/${userId}/${productName}`;
 
-            // Prepare product data
             const productData = {
                 name: productName,
-                type: urlParams.get('type'),
+                type: productType,
+                subCategory: subCategory,
                 price: productPrice,
                 description: productDescription,
                 quantity: productQty,
                 userId: userId
             };
 
-            // Upload Cover Image if available
             if (coverImage) {
                 const coverImageRef = ref(storage, `${productStoragePath}/Cover/cover.jpg`);
                 await uploadBytes(coverImageRef, coverImage);
                 const coverImageUrl = await getDownloadURL(coverImageRef);
                 productData.coverImageUrl = coverImageUrl;
             }
-
-            // Upload Thumbnail Image if available
             if (thumbnailImage) {
                 const thumbnailImageRef = ref(storage, `${productStoragePath}/Thumbnail/thumbnail.jpg`);
                 await uploadBytes(thumbnailImageRef, thumbnailImage);
@@ -65,7 +82,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 productData.thumbnailImageUrl = thumbnailImageUrl;
             }
 
-            // Save product data in Firestore
             await setDoc(productRef, productData);
 
             alert("Product saved successfully!");
