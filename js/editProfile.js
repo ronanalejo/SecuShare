@@ -1,5 +1,3 @@
-// editProfile.js
-
 import { auth } from './firebase.js';
 import { createUserProfile, fetchUserProfile } from './firestore.js';
 
