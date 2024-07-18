@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profile - SecuShare</title>
+    <title>Sales - SecuShare</title>
     <link rel="stylesheet" href="./css/StorePageCSS.css">
-    <link rel="stylesheet" href="./css/product.css">
+    <link rel="stylesheet" href="./css/sales.css">
+    <link rel="stylesheet" href="./css/profile2.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jost:wght@100;400;600;900&display=swap" rel="stylesheet">
@@ -23,7 +24,7 @@
             <div class="bx bx-menu" id="menu-icon"></div>
         </div>
     </header>
-    <section class="profile-section">
+    <section class="sales-section">
         <div class="sidebar">
             <ul>
                 <li><a href="profile.html" class="active"><i class='bx bx-home-alt'></i> Home</a></li>
@@ -34,13 +35,38 @@
                 <li><a href="#" id="logoutButton"><i class='bx bx-log-out'></i> Logout</a></li>
             </ul>
         </div>
+        </div>
 
         <main class="main-content">
-            <div class="top-bar">
-                <h2>Products</h2>
-                <a href="addProduct.html" class="new-product-btn">New Product</a>
+            <div class="sales-container">
+                <h2>Payment Transactions</h2>
+                <table id="salesTable">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Invoice#</th>
+                            <th>Source#</th>
+                            <th>Payment#</th>
+                            <th>Amount</th>
+                            <th>Status</th>
+                            <th>Created</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
+                <div class="total-sales">
+                    <p>Total Sales: $<span id="totalSales">0.00</span></p>
+                </div>
             </div>
         </main>
     </section>
+
+    <script type="module" src="./js/firebase.js"></script>
+    <script type="module" src="./js/firestore.js"></script>
+    <script type="module" src="./js/auth.js"></script>
+    <script type="module" src="./js/sales.js"></script>
 </body>
 </html>

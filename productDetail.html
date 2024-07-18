@@ -1,62 +1,84 @@
+@ -1,83 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profile - SecuShare</title>
-    <link rel="stylesheet" href="./css/StorePageCSS.css">
-    <link rel="stylesheet" href="./css/product.css">
+    <title>Product Detail</title>
+    <link rel="stylesheet" href="css/StorePageCSS.css">
+    <link rel="stylesheet" href="css/productDetails.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@100;400;600;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body>
+    
     <header>
         <a href="StorePage.html" class="logo"><img src="Img/Logo_Summer.png" alt="SecuShare Logo"></a>
         <ul class="navmenu" id="mainNav">
+            <li><a href="profile.html">Start Selling</a></li>
+            <li><a href="Image.html" id="tagsDropdownImage">Image <i class="fas fa-caret-down"></i></a>
+                <div class="dropdown-content">
+                    <a href="Image.html#photo">Photos</a>
+                    <a href="Image.html#vector">Vectors</a>
+                    <a href="Image.html#illustration">Illustrations</a>
+                    <a href="Image.html#background">Background</a>
+                    <a href="Image.html">More</a>
+                </div>
+            </li>
+            <li><a href="Video.html" id="tagsDropdownVideo">Video <i class="fas fa-caret-down"></i></a>
+                <div class="dropdown-content">
+                    <a href="Video.html#animation.html">Animation</a>
+                    <a href="Video.html#gif.html">Gifs</a>
+                    <a href="Video.html#transitions.html">Transitions</a>
+                    <a href="Video.html#tutorial.html">Tutorial</a>
+                    <a href="Video.html#trailer">Trailers</a>
+                    <a href="Video.html">More</a>
+                </div>
+            </li>
+            <li><a href="Audio.html" id="tagsDropdownAudio">Audio <i class="fas fa-caret-down"></i></a>
+                <div class="dropdown-content">
+                    <a href="Audio.html#music">Musics</a>
+                    <a href="Audio.html#soundeEffect">Sound Effects</a>
+                    <a href="Audio.html#loop">Audio</a>
+                    <a href="Audio.html#voiceOver">Voice Overs</a>
+                    <a href="Audio.html#ambient">Ambients</a>
+                    <a href="Audio.html">More</a>
+                </div>
+            </li>
+            <li><a href="PDF.html" id="tagsDropdownPDF">PDF <i class="fas fa-caret-down"></i></a>
+                <div class="dropdown-content">
+                    <a href="PDF.html#educational">Educational</a>
+                    <a href="PDF.html#review">Review</a>
+                    <a href="PDF.html#research">Research Paper</a>
+                    <a href="PDF.html">More</a>
+                </div>
+            </li>
+            <li><a href="Ebook.html" id="tagsDropdownPDF">E-Book <i class="fas fa-caret-down"></i></a>
+                <div class="dropdown-content">
+                    <a href="EBook.html#educational">Educational</a>
+                    <a href="Ebook.html#eBook">E-Book</a>
+                    <a href="Ebook.html#research">Research Paper</a>
+                    <a href="EBook.html">More</a>
+                </div>
+            </li>
         </ul>
         <div class="navicon">
+            <a href="#" id="searchIcon"><i class='bx bx-search-alt'></i></a>
+            <input type="text" id="searchBar" placeholder="Search products..." class="hidden">
             <a href="Cart.html"><i class='bx bx-cart-alt'></i></a>
             <a href="profile.html"><i class='bx bxs-user-circle'></i></a>
             <div class="bx bx-menu" id="menu-icon"></div>
         </div>
     </header>
-    <section class="profile-section">
-        <div class="sidebar">
-            <ul>
-                <li><a href="profile.html" class="active"><i class='bx bx-home-alt'></i> Home</a></li>
-                <li><a href="Products.html"><i class='bx bx-book-open'></i> Products</a></li>
-                <li><a href="Sales"><i class='bx bx-dollar-circle'></i> Sales</a></li>
-                <li><a href="cashOut.html"><i class='bx bx-wallet'></i> CashOut</a></li>
-                <li><a href="editProfile.html"><i class='bx bx-cog'></i> Settings</a></li>
-            </ul>
+
+    <section class="product-detail-section">
+        <div class="container" id="productDetailContainer">
         </div>
-
-        <main class="main-content">
-            <div class="top-bar">
-                <h2>Products</h2>
-                <a href="addProduct.html" class="new-product-btn">New Product</a>
-            </div>
-
-            <div class="product-table-container">
-                <table class="product-table">
-                    <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Type</th>
-                            <th>Price</th>
-                            <th>Quantity</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody id="productTableBody">
-                    </tbody>
-                </table>
-            </div>
-        </main>
     </section>
-    <script type="module" src="./js/product.js"></script>
+
+    <script type="module" src="./js/productDetail.js"></script>
 </body>
 </html>

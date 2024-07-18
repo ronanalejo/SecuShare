@@ -24,33 +24,33 @@
         </div>
     </header>
     <section class="profile-section">
-    <div class="sidebar">
-        <ul>
-            <li><a href="profile.html" class="active"><i class='bx bx-home-alt'></i> Home</a></li>
-            <li><a href="Products.html"><i class='bx bx-book-open'></i> Products</a></li>
-            <li><a href="Sales"><i class='bx bx-dollar-circle'></i> Sales</a></li>
-            <li><a href="cashOut.html"><i class='bx bx-wallet' ></i> CashOut</a></li>
-            <li><a href="editProfile.html"><i class='bx bx-cog'></i> Settings</a></li>
-        </ul>
-    </div>
-
-    <main class="main-content">
-        <div class="profile-container">
-            <img alt="Profile Picture" class="profile-picture" id="profilePicture">
-            <h2>Your Profile</h2>
-            <div class="profile-info">
-                <p>Name: <span id="profileName">Loading...</span></p>
-                <p>Email: <span id="profileEmail">Loading...</span></p>
-                <p>Bio: <span id="profileBio">This User has not yet added their Bio...</span></p>
-            </div>
+        <div class="sidebar">
+            <ul>
+                <li><a href="profile.html" class="active"><i class='bx bx-home-alt'></i> Home</a></li>
+                <li><a href="purchased.html"><i class='bx bx-purchase-tag'></i> Purchased Items</a></li>
+                <li><a href="Products.html"><i class='bx bx-book-open'></i> Products</a></li>
+                <li><a href="Sales.html"><i class='bx bx-dollar-circle'></i> Sales</a></li>
+                <li><a href="editProfile.html"><i class='bx bx-pencil'></i> Edit Profile</a></li>
+                <li><a href="#" id="logoutButton"><i class='bx bx-log-out'></i> Logout</a></li>
+            </ul>
         </div>
-    </main>
+
+        <main class="main-content">
+            <div class="profile-container">
+                <img alt="Profile Picture" class="profile-picture" id="profilePicture">
+                <h2>Your Profile</h2>
+                <div class="profile-info">
+                    <p>Name: <span id="profileName">Loading...</span></p>
+                    <p>Email: <span id="profileEmail">Loading...</span></p>
+                    <p>Bio: <span id="profileBio">This User has not yet added their Bio...</span></p>
+                </div>
+            </div>
+        </main>
     </section>
 
     <script type="module" src="./js/firebase.js"></script>
     <script type="module" src="./js/firestore.js"></script>
     <script type="module" src="./js/auth.js"></script>
     <script type="module" src="./js/profile.js"></script>
-</body>
 </body>
 </html>

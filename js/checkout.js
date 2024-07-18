@@ -56,7 +56,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    // Event listener for GCash form submission
     gcashForm.addEventListener('submit', async function (event) {
         event.preventDefault();
 
@@ -65,12 +64,12 @@ document.addEventListener('DOMContentLoaded', function () {
         const customerPhone = document.getElementById('customer-phone').value;
 
         const paymentData = {
-            amount: Math.round(parseFloat(amountField.value) * 100), // Convert to cents
+            amount: Math.round(parseFloat(amountField.value) * 100),
             currency: 'PHP',
             type: 'gcash',
             redirect: {
-                success: 'https://yourdomain.com/success',
-                failed: 'https://yourdomain.com/failed'
+                success: 'http://127.0.0.1:5500/paymentS.html',
+                failed: 'http://127.0.0.1:5500/paymentF.html'
             },
             billing: {
                 name: customerName,

@@ -1,0 +1,36 @@
+.main-content {
+    margin-left: 250px;
+    padding: 2rem;
+}
+
+.sales-container {
+    background-color: #fff;
+    padding: 2rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.sales-container h2 {
+    margin-bottom: 1rem;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 2rem;
+}
+
+table th, table td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.total-sales {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.total-sales p {
+    font-size: 1.25rem;
+    font-weight: bold;
+}

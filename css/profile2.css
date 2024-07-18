@@ -233,3 +233,29 @@ header {
 .profile-container .edit-btn:hover {
     background-color: #EE1C47;
 }
+
+/* For purchased-items */
+
+.purchased-items {
+    display: flex;
+    flex-direction: column;
+}
+
+.purchased-item {
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+.purchased-item h3 {
+    margin: 0;
+    font-size: 18px;
+}
+
+.purchased-item p {
+    margin: 5px 0;
+}
+
+.download-link {
+    color: blue;
+    text-decoration: underline;
+}
