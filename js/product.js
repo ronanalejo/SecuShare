@@ -1,20 +1,52 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const urlParams = new URLSearchParams(window.location.search);
-    const productName = urlParams.get('name');
-    const productItems = JSON.parse(localStorage.getItem('productItems')) || [];
-    const product = productItems.find(item => item.name === productName);
+import { db, auth } from './firebase.js';
+import { collection, query, where, getDocs } from './firebase.js';
 
-    if (product) {
-        document.getElementById('productImg').src = product.img;
-        document.getElementById('productName').textContent = product.name;
-        document.getElementById('productDescription').textContent = product.description;
-        document.getElementById('productPrice').textContent = product.price;
-    } else {
-        window.location.href = 'store.html';
+document.addEventListener('DOMContentLoaded', async () => {
+    const user = auth.currentUser;
+    if (!user) {
+        console.error("User not authenticated");
+        return;
     }
 
-    document.getElementById('buyNowBtn').addEventListener('click', () => {
-        // To be immplement buy now functionality!!!!!!
-        alert('Buy Now functionality to be implemented.');
+    const userId = user.uid;
+    const productsCollection = collection(db, `users/${userId}/products`);
+
+    try {
+        const q = query(productsCollection);
+        const querySnapshot = await getDocs(q);
+        const productTableBody = document.getElementById('productTableBody');
+        productTableBody.innerHTML = '';
+
+        querySnapshot.forEach((doc) => {
+            const product = doc.data();
+            const productRow = `
+                <tr>
+                    <td>${product.name}</td>
+                    <td>${product.type}</td>
+                    <td>₱${product.price}</td>
+                    <td>${product.quantity}</td>
+                    <td>
+                        <a href="editProduct.html?id=${doc.id}" class="edit-btn">Edit</a>
+                        <button class="delete-btn" data-id="${doc.id}">Delete</button>
+                    </td>
+                </tr>
+            `;
+            productTableBody.innerHTML += productRow;
+        });
+    } catch (error) {
+        console.error("Error fetching products:", error);
+    }
+
+    document.addEventListener('click', async (event) => {
+        if (event.target.classList.contains('delete-btn')) {
+            const productId = event.target.getAttribute('data-id');
+            try {
+                await deleteDoc(doc(db, `users/${userId}/products/${productId}`));
+                event.target.closest('tr').remove();
+                console.log(`Product ${productId} deleted successfully`);
+            } catch (error) {
+                console.error("Error deleting product:", error);
+            }
+        }
     });
 });

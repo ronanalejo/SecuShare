@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function updateCartTotal() {
         console.log('Updating cart total');
-        const total = cart.reduce((sum, item) => sum + item.price, 0);
+        const total = cart.reduce((sum, item) => sum + parseFloat(item.price), 0);
         console.log('Total calculated:', total);
         cartTotalElement.textContent = total.toFixed(2);
     }

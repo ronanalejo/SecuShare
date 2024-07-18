@@ -95,3 +95,32 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     await fetchProducts();
 });
+
+
+
+function fetchTrendingProducts() {
+    db.collection("products").where("trending", "==", true).get()
+        .then((querySnapshot) => {
+            const productsList = document.querySelector('.products-list');
+            productsList.innerHTML = '';
+
+            querySnapshot.forEach((doc) => {
+                const product = doc.data();
+                const productItem = `
+                    <div class="product-item">
+                        <img src="${product.image}" alt="${product.name}">
+                        <h3>${product.name}</h3>
+                        <p>${product.description}</p>
+                        <p class="product__price">$${product.price}</p>
+                        <a href="#" class="product__button">Add to Cart</a>
+                    </div>
+                `;
+                productsList.innerHTML += productItem;
+            });
+        })
+        .catch((error) => {
+            console.error("Error fetching trending products: ", error);
+        });
+}
+
+document.addEventListener('DOMContentLoaded', fetchTrendingProducts);
