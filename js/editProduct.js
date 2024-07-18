@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const subCategoryGroup = document.getElementById('subCategoryGroup');
     const subCategoryElement = document.getElementById('subCategory');
     const coverImageGroup = document.getElementById('coverImageGroup');
-    const productPicturesGroup = document.getElementById('productPicturesGroup');
+    const productTeasersGroup = document.getElementById('productTeasersGroup');
     const productFileGroup = document.getElementById('productFileGroup');
 
     productTypeElement.addEventListener('change', () => {
@@ -35,11 +35,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (selectedType === 'image') {
             coverImageGroup.style.display = 'none';
-            productPicturesGroup.style.display = 'none';
+            productTeasersGroup.style.display = 'none';
             productFileGroup.style.display = 'block';
         } else {
             coverImageGroup.style.display = 'block';
-            productPicturesGroup.style.display = 'block';
+            productTeasersGroup.style.display = 'block';
             productFileGroup.style.display = 'none';
         }
     });
@@ -61,12 +61,12 @@ document.addEventListener('DOMContentLoaded', () => {
         const productDescription = document.getElementById('productDescription').value;
         const productQty = document.getElementById('productQty').value;
         const coverImage = document.getElementById('coverImage').files[0];
-        const productPictures = [
-            document.getElementById('productPicture1').files[0],
-            document.getElementById('productPicture2').files[0],
-            document.getElementById('productPicture3').files[0],
-            document.getElementById('productPicture4').files[0],
-            document.getElementById('productPicture5').files[0],
+        const productTeasers = [
+            document.getElementById('productTeaser1').files[0],
+            document.getElementById('productTeaser2').files[0],
+            document.getElementById('productTeaser3').files[0],
+            document.getElementById('productTeaser4').files[0],
+            document.getElementById('productTeaser5').files[0],
         ];
 
         const productType = productTypeElement.value;
@@ -101,12 +101,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 productData.coverImageUrl = coverImageUrl;
             }
 
-            for (let i = 0; i < productPictures.length; i++) {
-                if (productPictures[i] && productType !== 'image') {
-                    const productPictureRef = ref(storage, `${productStoragePath}/picture${i + 1}.jpg`);
-                    await uploadBytes(productPictureRef, productPictures[i]);
-                    const productPictureUrl = await getDownloadURL(productPictureRef);
-                    productData[`productPicture${i + 1}Url`] = productPictureUrl;
+            for (let i = 0; i < productTeasers.length; i++) {
+                if (productTeasers[i] && productType !== 'image') {
+                    const productTeaserRef = ref(storage, `${productStoragePath}/picture${i + 1}.jpg`);
+                    await uploadBytes(productTeaserRef, productTeasers[i]);
+                    const productTeaserUrl = await getDownloadURL(productTeaserRef);
+                    productData[`productTeaser${i + 1}Url`] = productTeaserUrl;
                 }
             }
 
