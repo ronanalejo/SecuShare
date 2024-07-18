@@ -6,10 +6,14 @@ export const createUserProfile = async (userId, userData, profilePicture) => {
     const userRef = doc(db, "users", userId);
     try {
         if (profilePicture) {
-            const profilePicturePath = `profile_pictures/${userId}/profile.${profilePicture.type.split('/')[1]}`;
+            const fileType = profilePicture.type.split('/')[1];
+            const profilePicturePath = `profile_pictures/${userId}/profile.${fileType}`;
             const storageRef = ref(storage, profilePicturePath);
+            console.log(`Uploading profile picture to path: ${profilePicturePath}`);
             await uploadBytes(storageRef, profilePicture);
+            console.log('Profile picture uploaded successfully');
             const profilePictureUrl = await getDownloadURL(storageRef);
+            console.log(`Profile picture URL: ${profilePictureUrl}`);
             userData.profilePicture = profilePictureUrl;
         }
         console.log("Setting user data:", userData);

@@ -8,19 +8,33 @@ document.addEventListener('DOMContentLoaded', function () {
     if (editProfileForm) {
         editProfileForm.addEventListener('submit', async (e) => {
             e.preventDefault();
-            const userId = auth.currentUser.uid;
+
+            const userId = auth.currentUser ? auth.currentUser.uid : null;
+            if (!userId) {
+                console.error("User not logged in.");
+                return;
+            }
+
             const name = document.getElementById('profileName').value;
             const email = document.getElementById('profileEmail').value;
-            const profilePicture = document.getElementById('profilePicture').files[0];
-            
-            // Validate image type
+            const bio = document.getElementById('profileBio').value;
+            const profilePictureInput = document.getElementById('profilePicture');
+            const profilePicture = profilePictureInput && profilePictureInput.files ? profilePictureInput.files[0] : null;
+
+            console.log('Profile Picture Input Element:', profilePictureInput);
+            console.log('Profile Picture Files:', profilePictureInput.files);
+            console.log(`Profile Picture: ${profilePicture ? profilePicture.name : 'None'}`);
+
             if (profilePicture && !['image/png', 'image/jpeg'].includes(profilePicture.type)) {
                 alert('Please upload a valid PNG or JPG image.');
                 return;
             }
-        
+
             try {
-                await createUserProfile(userId, { name, email }, profilePicture);
+                const userData = { name, email, bio };
+                console.log(`User data before saving: ${JSON.stringify(userData)}`);
+                await createUserProfile(userId, userData, profilePicture);
+                console.log("User profile updated successfully.");
                 window.location.href = 'profile.html';
             } catch (error) {
                 console.error("Error updating profile:", error);
@@ -35,11 +49,17 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     const loadProfile = async () => {
-        const userId = auth.currentUser.uid;
+        const userId = auth.currentUser ? auth.currentUser.uid : null;
+        if (!userId) {
+            console.error("User not logged in.");
+            return;
+        }
+
         const userProfile = await fetchUserProfile(userId);
         if (userProfile) {
-            document.getElementById('profileName').value = userProfile.name;
-            document.getElementById('profileEmail').value = userProfile.email;
+            document.getElementById('profileName').value = userProfile.name || '';
+            document.getElementById('profileEmail').value = userProfile.email || '';
+            document.getElementById('profileBio').value = userProfile.bio || '';
             if (userProfile.profilePicture) {
                 document.getElementById('currentProfilePicture').src = userProfile.profilePicture;
             }

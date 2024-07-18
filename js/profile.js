@@ -7,6 +7,7 @@ const auth = getAuth();
 document.addEventListener('DOMContentLoaded', () => {
     const profileNameElement = document.getElementById('profileName');
     const profileEmailElement = document.getElementById('profileEmail');
+    const profileBioElement = document.getElementById('profileBio');
     const profilePictureElement = document.getElementById('profilePicture');
 
     onAuthStateChanged(auth, async (user) => {
@@ -18,6 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const userData = userSnap.data();
                 if (profileNameElement) profileNameElement.textContent = userData.name || 'No name provided';
                 if (profileEmailElement) profileEmailElement.textContent = userData.email || user.email;
+                if (profileBioElement) profileBioElement.textContent = userData.bio || 'No bio provided';
                 if (userData.profilePicture && profilePictureElement) {
                     profilePictureElement.src = userData.profilePicture;
                 } else if (profilePictureElement) {
@@ -28,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         } else {
             console.log("No user is logged in");
-            window.location.href = 'login.html'; n
+            window.location.href = 'login.html';
         }
     });
 });
