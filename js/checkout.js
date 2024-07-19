@@ -84,7 +84,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         const paymentData = {
             attributes: {
-                amount: Math.round(amount * 100), // Convert to centavos
+                amount: Math.round(amount * 100),
                 currency: 'PHP',
                 type: 'gcash',
                 redirect: {

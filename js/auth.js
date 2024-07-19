@@ -1,4 +1,4 @@
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-auth.js";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-auth.js";
 import { createUserProfile } from "./firestore.js";
 
 const auth = getAuth();
@@ -42,9 +42,20 @@ export const logoutUser = async () => {
     }
 };
 
+export const sendPasswordReset = async (email) => {
+    try {
+        await sendPasswordResetEmail(auth, email);
+        alert("Password reset email sent! Please check your inbox.");
+    } catch (error) {
+        console.error("Password reset error:", error);
+        alert("Password reset failed: " + error.message);
+    }
+};
+
 document.addEventListener('DOMContentLoaded', () => {
     const loginForm = document.getElementById('loginForm');
     const registerForm = document.getElementById('registerForm');
+    const forgotPasswordForm = document.getElementById('forgotPasswordForm');
     const logoutButton = document.getElementById('logoutBtn');
 
     if (loginForm) {
@@ -67,6 +78,16 @@ document.addEventListener('DOMContentLoaded', () => {
             const password = document.getElementById('password').value;
             console.log("Register attempt with:", email);
             await registerUser(email, password, name);
+        });
+    }
+
+    if (forgotPasswordForm) {
+        console.log("Forgot Password form detected.");
+        forgotPasswordForm.addEventListener('submit', async (event) => {
+            event.preventDefault();
+            const email = document.getElementById('email').value;
+            console.log("Password reset attempt with:", email);
+            await sendPasswordReset(email);
         });
     }
 
