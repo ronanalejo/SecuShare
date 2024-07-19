@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         ebook: {
             educational: document.querySelector('#educational .product-container'),
             selfHelp: document.querySelector('#selfHelp .product-container'),
-            researchPaper: document.querySelector('#research .product-container')
+            fictional: document.querySelector('#fictional .product-container')
         }
     };
 

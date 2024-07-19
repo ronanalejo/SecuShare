@@ -238,24 +238,63 @@ header {
 
 .purchased-items {
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 20px;
 }
 
 .purchased-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px;
     padding: 10px;
-    border-bottom: 1px solid #ccc;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    width: 200px;
+    text-align: center;
 }
 
-.purchased-item h3 {
-    margin: 0;
-    font-size: 18px;
+.purchased-item__image {
+    width: 100%;
+    height: auto;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
 }
 
-.purchased-item p {
-    margin: 5px 0;
+.purchased-item__details {
+    margin-top: 10px;
 }
 
-.download-link {
-    color: blue;
-    text-decoration: underline;
+.purchased-item__title {
+    font-size: 1.2em;
+    margin: 10px 0;
+}
+
+.purchased-item__description {
+    font-size: 0.9em;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.purchased-item__price {
+    font-size: 1.1em;
+    color: #EE1C47;
+    margin-bottom: 10px;
+}
+
+.purchased-item__download-button {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.purchased-item__download-button:hover {
+    background-color: #218838;
 }

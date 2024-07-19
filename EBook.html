@@ -56,15 +56,15 @@ v<!DOCTYPE html>
             <li><a href="Ebook.html" id="tagsDropdownPDF">E-Book <i class="fas fa-caret-down"></i></a>
                 <div class="dropdown-content">
                     <a href="EBook.html#educational">Educational</a>
-                    <a href="Ebook.html#eBook">E-Book</a>
-                    <a href="Ebook.html#research">Research Paper</a>
+                    <a href="Ebook.html#selfHelp">Self Help</a>
+                    <a href="Ebook.html#fictional">Fictional</a>
                     <a href="EBook.html">More</a>
                 </div>
             </li>
         </ul>   
         <div class="navicon">
             <input type="text" id="searchBar" placeholder="Search products...">
-            <a href="#"><i class='bx bx-cart-alt'></i></a>
+            <a href="Cart.html"><i class='bx bx-cart-alt'></i></a>
             <a href="profile.html"><i class='bx bxs-user-circle'></i></a>
             <div class="bx bx-menu" id="menu-icon"></div>
         </div>
@@ -90,23 +90,29 @@ v<!DOCTYPE html>
             <a href="#eBook" class="subcategory-link">View Products</a>
         </div>
         <div class="subcategory">
-            <h3>Research Paper</h3>
-            <a href="#research" class="subcategory-link">View Products</a>
+            <h3>Fictional</h3>
+            <a href="#fictional" class="subcategory-link">View Products</a>
         </div>
     </section>
     
     <section class="products">
         <section id="educational" class="product-section">
             <h2>Educational</h2>
-            <div class="product-container"></div>
+            <div class="product-container" id="educationalContainer"></div>
+            <button class="view-more" data-section="ebook">View More</button>
+            <button class="view-less hidden" data-section="ebook">View Less</button>
         </section>
-        <section id="eBook" class="product-section">
-            <h2>E-Book</h2>
-            <div class="product-container"></div>
+        <section id="selfHelp" class="product-section">
+            <h2>Educational</h2>
+            <div class="product-container" id="selfHelpContainer"></div>
+            <button class="view-more" data-section="ebook">View More</button>
+            <button class="view-less hidden" data-section="ebook">View Less</button>
         </section>
-        <section id="research" class="product-section">
-            <h2>Research Paper</h2>
-            <div class="product-container"></div>
+        <section id="fictional" class="product-section">
+            <h2>Fictional</h2>
+            <div class="product-container" id="fictionalContainer"></div>
+            <button class="view-more" data-section="ebook">View More</button>
+            <button class="view-less hidden" data-section="ebook">View Less</button>
         </section>
     </section>
 

@@ -6,7 +6,6 @@
     <title>Payment Successful</title>
     <link rel="stylesheet" href="css/payment.css">
     <link rel="stylesheet" href="css/StorePageCSS.css">
-
 </head>
 <body>
     <header>
@@ -20,5 +19,20 @@
         <p>Amount: ₱<span id="amount"></span></p>
         <a href="StorePage.html">Return to Store</a>
     </main>
+
+    <script src="https://checkout.paymongo.com/v1/paymongo.js"></script>
+    <script src="js/checkout.js"></script>
+    <script>
+        // Fetch order details from local storage or other means
+        document.addEventListener('DOMContentLoaded', function () {
+            const orderId = localStorage.getItem('orderId');
+            const amount = localStorage.getItem('amount');
+            
+            if (orderId && amount) {
+                document.getElementById('order-id').textContent = orderId;
+                document.getElementById('amount').textContent = amount;
+            }
+        });
+    </script>
 </body>
 </html>
