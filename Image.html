@@ -16,51 +16,7 @@
     <header>
         <a href="StorePage.html" class="logo"><img src="Img/Logo_Summer.png" alt="SecuShare Logo"></a>
         <ul class="navmenu" id="mainNav">
-            <li><a href="Image.html" id="tagsDropdownImage">Image <i class="fas fa-caret-down"></i></a>
-                <div class="dropdown-content">
-                    <a href="Image.html#photo">Photos</a>
-                    <a href="Image.html#vector">Vectors</a>
-                    <a href="Image.html#illustration">Illustrations</a>
-                    <a href="Image.html#background">Background</a>
-                    <a href="Image.html">More</a>
-                </div>
-            </li>
-            <li><a href="Video.html" id="tagsDropdownVideo">Video <i class="fas fa-caret-down"></i></a>
-                <div class="dropdown-content">
-                    <a href="Video.html#animation.html">Animation</a>
-                    <a href="Video.html#gif.html">Gifs</a>
-                    <a href="Video.html#transitions.html">Transitions</a>
-                    <a href="Video.html#tutorial.html">Tutorial</a>
-                    <a href="Video.html#trailer">Trailers</a>
-                    <a href="Video.html">More</a>
-                </div>
-            </li>
-            <li><a href="Audio.html" id="tagsDropdownAudio">Audio <i class="fas fa-caret-down"></i></a>
-                <div class="dropdown-content">
-                    <a href="Audio.html#music">Musics</a>
-                    <a href="Audio.html#soundeEffect">Sound Effects</a>
-                    <a href="Audio.html#loop">Audio</a>
-                    <a href="Audio.html#voiceOver">Voice Overs</a>
-                    <a href="Audio.html#ambient">Ambients</a>
-                    <a href="Audio.html">More</a>
-                </div>
-            </li>
-            <li><a href="PDF.html" id="tagsDropdownPDF">PDF <i class="fas fa-caret-down"></i></a>
-                <div class="dropdown-content">
-                    <a href="PDF.html#educational">Educational</a>
-                    <a href="PDF.html#review">Review</a>
-                    <a href="PDF.html#research">Research Paper</a>
-                    <a href="PDF.html">More</a>
-                </div>
-            </li>
-            <li><a href="Ebook.html" id="tagsDropdownPDF">E-Book <i class="fas fa-caret-down"></i></a>
-                <div class="dropdown-content">
-                    <a href="EBook.html#educational">Educational</a>
-                    <a href="Ebook.html#eBook">E-Book</a>
-                    <a href="Ebook.html#research">Research Paper</a>
-                    <a href="EBook.html">More</a>
-                </div>
-            </li>
+            <!-- Navigation menu as in your original code -->
         </ul>
         <div class="navicon">
             <input type="text" id="searchBar" placeholder="Search products...">
@@ -82,15 +38,15 @@
     <section class="subcategories">
         <div class="subcategory">
             <h3>Photos</h3>
-            <a href="#photo" class="subcategory-link">View Products</a>
+            <a href="#photos" class="subcategory-link">View Products</a>
         </div>
         <div class="subcategory">
             <h3>Vectors</h3>
-            <a href="#vector" class="subcategory-link">View Products</a>
+            <a href="#vectors" class="subcategory-link">View Products</a>
         </div>
         <div class="subcategory">
             <h3>Illustrations</h3>
-            <a href="#illustration" class="subcategory-link">View Products</a>
+            <a href="#illustrations" class="subcategory-link">View Products</a>
         </div>
         <div class="subcategory">
             <h3>Background</h3>
@@ -101,19 +57,27 @@
     <section class="products">
         <section id="photos" class="product-section">
             <h2>Photos</h2>
-            <div class="product-container"></div>
+            <div class="product-container" id="photosContainer"></div>
+            <button class="view-more" data-section="photos">View More</button>
+            <button class="view-less hidden" data-section="photos">View Less</button>
         </section>
         <section id="vectors" class="product-section">
             <h2>Vectors</h2>
-            <div class="product-container"></div>
+            <div class="product-container" id="vectorsContainer"></div>
+            <button class="view-more" data-section="vectors">View More</button>
+            <button class="view-less hidden" data-section="photos">View Less</button>
         </section>
         <section id="illustrations" class="product-section">
             <h2>Illustrations</h2>
-            <div class="product-container"></div>
+            <div class="product-container" id="illustrationsContainer"></div>
+            <button class="view-more" data-section="illustrations">View More</button>
+            <button class="view-less hidden" data-section="photos">View Less</button>
         </section>
         <section id="background" class="product-section">
             <h2>Background</h2>
-            <div class="product-container"></div>
+            <div class="product-container" id="backgroundContainer"></div>
+            <button class="view-more" data-section="background">View More</button>
+            <button class="view-less hidden" data-section="photos">View Less</button>
         </section>
     </section>
 
@@ -121,6 +85,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/9.0.0/swiper-bundle.min.js"></script>
     <script src="js/swiper-init.js"></script>
     <script src="js/search.js"></script>
+    <script src="js/viewMore.js"></script>
     <script type="module" src="./js/firebase.js"></script>
     <script type="module" src="./js/firestore.js"></script>
     <script type="module" src="./js/auth.js"></script>

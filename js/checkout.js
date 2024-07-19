@@ -4,6 +4,11 @@ document.addEventListener('DOMContentLoaded', function () {
     const paymentResult = document.getElementById('payment-result');
     const cartItemsContainer = document.querySelector('.cart-items');
     const cartTotalElement = document.getElementById('cart-total');
+    const serviceFeeCountElement = document.getElementById('service-fee-count');
+    const serviceFeeTotalElement = document.getElementById('service-fee-total');
+
+    const SERVICE_FEE_PER_ITEM = 5.00;
+    const MINIMUM_AMOUNT = 20.00; // Minimum amount in PHP
 
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
     console.log('Cart loaded:', cart);
@@ -33,9 +38,17 @@ document.addEventListener('DOMContentLoaded', function () {
     function updateCartTotal() {
         console.log('Updating cart total');
         const total = cart.reduce((sum, item) => sum + parseFloat(item.price), 0);
+        const serviceFee = cart.length * SERVICE_FEE_PER_ITEM;
+        const finalTotal = total + serviceFee;
         console.log('Total calculated:', total);
-        cartTotalElement.textContent = total.toFixed(2);
+        console.log('Service fee:', serviceFee);
+        console.log('Final total:', finalTotal);
+        serviceFeeCountElement.textContent = cart.length;
+        serviceFeeTotalElement.textContent = serviceFee.toFixed(2);
+        cartTotalElement.textContent = finalTotal.toFixed(2);
+        amountField.value = finalTotal.toFixed(2);
     }
+
     function saveCart() {
         console.log('Saving cart:', cart);
         localStorage.setItem('cart', JSON.stringify(cart));
@@ -62,19 +75,27 @@ document.addEventListener('DOMContentLoaded', function () {
         const customerName = document.getElementById('customer-name').value;
         const customerEmail = document.getElementById('customer-email').value;
         const customerPhone = document.getElementById('customer-phone').value;
+        const amount = parseFloat(amountField.value);
+
+        if (amount < MINIMUM_AMOUNT) {
+            paymentResult.textContent = 'The total amount must be at least ₱20.00. Please add more items to your cart.';
+            return;
+        }
 
         const paymentData = {
-            amount: Math.round(parseFloat(amountField.value) * 100),
-            currency: 'PHP',
-            type: 'gcash',
-            redirect: {
-                success: 'http://127.0.0.1:5500/paymentS.html',
-                failed: 'http://127.0.0.1:5500/paymentF.html'
-            },
-            billing: {
-                name: customerName,
-                email: customerEmail,
-                phone: customerPhone
+            attributes: {
+                amount: Math.round(amount * 100), // Convert to centavos
+                currency: 'PHP',
+                type: 'gcash',
+                redirect: {
+                    success: 'http://127.0.0.1:5500/paymentS.html',
+                    failed: 'http://127.0.0.1:5500/paymentF.html'
+                },
+                billing: {
+                    name: customerName,
+                    email: customerEmail,
+                    phone: customerPhone
+                }
             }
         };
 
@@ -83,12 +104,13 @@ document.addEventListener('DOMContentLoaded', function () {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': 'Basic ' + btoa('YOUR_PUBLIC_KEY:')
+                    'Authorization': 'Basic ' + btoa('sk_test_4UvY7jjuoWuwMJuuf1xcGi7g:')
                 },
-                body: JSON.stringify({ data: { attributes: paymentData } })
+                body: JSON.stringify({ data: paymentData })
             });
 
             const result = await response.json();
+            console.log(result);
             if (result.data && result.data.attributes && result.data.attributes.redirect) {
                 window.location.href = result.data.attributes.redirect.checkout_url;
             } else {
@@ -99,5 +121,6 @@ document.addEventListener('DOMContentLoaded', function () {
             paymentResult.textContent = 'Payment failed. Please try again.';
         }
     });
+
     renderCart();
 });
