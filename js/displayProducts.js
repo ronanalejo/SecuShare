@@ -35,14 +35,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
     };
 
-    const productTypePages = {
-        image: 'Image.html',
-        video: 'Video.html',
-        audio: 'Audio.html',
-        pdf: 'PDF.html',
-        ebook: 'EBook.html'
-    };
-
     const fetchProducts = async () => {
         const productsQuery = collectionGroup(db, 'products');
         const querySnapshot = await getDocs(productsQuery);
@@ -53,16 +45,16 @@ document.addEventListener('DOMContentLoaded', async () => {
             const subCategory = productData.subCategory;
 
             if (subcategories[productType] && subcategories[productType][subCategory]) {
-                const productElement = createProductElement(productData, productTypePages[productType]);
+                const productElement = createProductElement(productData);
                 subcategories[productType][subCategory].appendChild(productElement);
             }
         });
     };
 
-    const createProductElement = (product, productTypePage) => {
+    const createProductElement = (product) => {
         const productDiv = document.createElement('div');
         productDiv.classList.add('product__article');
-        productDiv.onclick = () => location.href = `${productTypePage}?userId=${product.userId}&productName=${product.name}`;
+        productDiv.onclick = () => location.href = `productDetail.html?userId=${product.userId}&productName=${product.name}`;
 
         const imgDiv = document.createElement('div');
         imgDiv.classList.add('product__image');
@@ -95,7 +87,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         const viewMoreButton = document.createElement('a');
         viewMoreButton.classList.add('product__button');
-        viewMoreButton.href = `${productTypePage}?userId=${product.userId}&productName=${product.name}`;
+        viewMoreButton.href = `productDetail.html?userId=${product.userId}&productName=${product.name}`;
         viewMoreButton.textContent = 'View More';
 
         const addToCartButton = document.createElement('button');
