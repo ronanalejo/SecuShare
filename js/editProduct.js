@@ -59,7 +59,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const productName = document.getElementById('productName').value;
         const productPrice = document.getElementById('productPrice').value;
         const productDescription = document.getElementById('productDescription').value;
-        const productQty = document.getElementById('productQty').value;
         const coverImage = document.getElementById('coverImage').files[0];
         const productTeasers = [
             document.getElementById('productTeaser1').files[0],
@@ -73,13 +72,17 @@ document.addEventListener('DOMContentLoaded', () => {
         const subCategory = subCategoryElement.value;
         const productFile = document.getElementById('productFile').files[0];
 
+        if (isNaN(productPrice) || productPrice < 0) {
+            alert("Price must be a non-negative number.");
+            return;
+        }
+
         const productData = {
             name: productName,
             type: productType,
             subCategory: subCategory,
             price: productPrice,
             description: productDescription,
-            quantity: productQty,
             userId: userId
         };
 
