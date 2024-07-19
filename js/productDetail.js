@@ -18,11 +18,9 @@ document.addEventListener('DOMContentLoaded', async () => {
         if (productSnap.exists()) {
             const product = productSnap.data();
             const productDetailContainer = document.getElementById('productDetailContainer');
-            const productTeaserUrl = product.type === 'image' ? product.productFileUrl : product.coverImageUrl;
 
-            const productDetail = `
+            let productDetail = `
                 <div class="product-detail">
-                    <img src="${productTeaserUrl}" alt="${product.name}" class="product-detail-img" style="${product.type === 'image' ? 'filter: blur(10px);' : ''}">
                     <div class="product-detail-info">
                         <h2>${product.name}</h2>
                         <p><strong>Type:</strong> ${product.type}</p>
@@ -32,8 +30,28 @@ document.addEventListener('DOMContentLoaded', async () => {
                         <button id="buyNowButton" class="buy-button">Buy Now</button>
                         <button id="addToCartButton" class="add-to-cart-button">Add to Cart</button>
                     </div>
-                </div>
             `;
+
+            if (product.type === 'video') {
+                const productTeaserUrl = product.productTeaserUrl;
+                if (productTeaserUrl) {
+                    productDetail += `
+                        <video controls width="600">
+                            <source src="${productTeaserUrl}" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    `;
+                } else {
+                    console.error("No video URL found for the product.");
+                }
+            } else {
+                const productTeaserUrl = product.type === 'image' ? product.productFileUrl : product.coverImageUrl;
+                productDetail += `
+                    <img src="${productTeaserUrl}" alt="${product.name}" class="product-detail-img" style="${product.type === 'image' ? 'filter: blur(10px);' : ''}">
+                `;
+            }
+
+            productDetail += `</div>`;
             productDetailContainer.innerHTML = productDetail;
 
             document.getElementById('buyNowButton').addEventListener('click', () => {
